@@ -1,6 +1,7 @@
 //NO WAR JUST LOVE
 
 #include <iostream>
+#include <stdio.h>
 #include <cstring>
 #include <algorithm>
 
@@ -18,6 +19,10 @@ int doShopping(int budget,int currentGarment){
         return M-budget;
     }
 
+    if (LookBack[budget][currentGarment] != -1){
+        return LookBack[budget][currentGarment];
+    }
+
     int bestBuy = -1027;
 
     for(int m=0;m<GarmentOptions[currentGarment];m++){
@@ -31,22 +36,22 @@ int doShopping(int budget,int currentGarment){
 
 int main(){
 
-    std::cin>>N;
+    scanf("%d",&N);
 
     while(N--){
-        std::cin>>M>>C;
+        scanf("%i %i",&M,&C);
         for(int m=0;m<C;m++){
-            std::cin>>GarmentOptions[m];
+            scanf("%i",&GarmentOptions[m]);
             for(int o=0;o<GarmentOptions[m];o++){
-                std::cin>>Garments[m][o];
+                scanf("%i",&Garments[m][o]);
             }
         }
 
-        memset(LookBack,-1,sizeof(LookBack));
+        memset(LookBack,-1,200*20*4);
         int bestBuy=doShopping(M,0);
 
         if(bestBuy>0){
-            std::cout<<bestBuy;
+            std::cout<<bestBuy<<std::endl;
         }
         else{
             std::cout<<"no solution\n";
