@@ -1,4 +1,6 @@
-//NO WAR JUST LOVE
+//UVA 11450
+//Solved in 1.500 ms
+//@Author: The Pacifist
 
 #include <iostream>
 #include <stdio.h>
@@ -12,7 +14,7 @@ int C,M,N;
 int doShopping(int budget,int currentGarment){
 
     if (budget<0){
-        return -1027;
+        return -10;
     }
 
     if (currentGarment==C){
@@ -23,7 +25,7 @@ int doShopping(int budget,int currentGarment){
         return LookBack[budget][currentGarment];
     }
 
-    int bestBuy = -1027;
+    int bestBuy = -10;
 
     for(int m=0;m<GarmentOptions[currentGarment];m++){
         bestBuy= std::max(bestBuy, doShopping(budget-Garments[currentGarment][m],currentGarment+1));
